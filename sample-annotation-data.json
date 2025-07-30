@@ -1,0 +1,30 @@
+{
+	"data": [
+		{
+			"index": 1,
+			"annotations": [
+				{
+					"property": ["sentiment", "topic"],
+					"dimension": ["positive", "technology"]
+				}
+			]
+		},
+		{
+			"index": 2,
+			"annotations": [
+				{
+					"property": ["complexity"],
+					"dimension": ["simple"]
+				},
+				{
+					"property": ["audience"],
+					"dimension": ["general"]
+				}
+			]
+		},
+		{
+			"index": 3,
+			"annotations": []
+		}
+	]
+}
