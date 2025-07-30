@@ -418,147 +418,159 @@ export const AnnotationPage = ({
 					<div className="annotations-list">
 						<h3>Annotations for Index {selectedIndex}</h3>
 
-						{currentAnnotationItem?.annotations.map(
-							(annotation, annotationIndex) => (
-								<div key={annotationIndex} className="annotation-card">
-									<div className="annotation-header">
-										<h4>Annotation {annotationIndex + 1}</h4>
-										<button
-											onClick={() => removeAnnotation(annotationIndex)}
-											className="delete-annotation-btn"
-											title="Delete annotation"
-										>
-											🗑️
-										</button>
-									</div>
+						{currentAnnotationItem &&
+						currentAnnotationItem.annotations &&
+						currentAnnotationItem.annotations.length > 0 ? (
+							currentAnnotationItem.annotations.map(
+								(annotation, annotationIndex) => (
+									<div key={annotationIndex} className="annotation-card">
+										<div className="annotation-header">
+											<h4>Annotation {annotationIndex + 1}</h4>
+											<button
+												onClick={() => removeAnnotation(annotationIndex)}
+												className="delete-annotation-btn"
+												title="Delete annotation"
+											>
+												🗑️
+											</button>
+										</div>
 
-									<div className="property-section">
-										<h5>Properties:</h5>
-										{annotation.property.map((prop, propIndex) => (
-											<div key={propIndex} className="input-field">
-												<input
-													ref={(el) => {
-														if (el) {
-															inputRefs.current.set(
-																getInputKey(
-																	annotationIndex,
-																	"property",
-																	propIndex
-																),
-																el
+										<div className="property-section">
+											<h5>Properties:</h5>
+											{annotation.property.map((prop, propIndex) => (
+												<div key={propIndex} className="input-field">
+													<input
+														ref={(el) => {
+															if (el) {
+																inputRefs.current.set(
+																	getInputKey(
+																		annotationIndex,
+																		"property",
+																		propIndex
+																	),
+																	el
+																)
+															}
+														}}
+														type="text"
+														value={prop}
+														onChange={(e) =>
+															updateAnnotationProperty(
+																annotationIndex,
+																propIndex,
+																e.target.value
 															)
 														}
-													}}
-													type="text"
-													value={prop}
-													onChange={(e) =>
-														updateAnnotationProperty(
-															annotationIndex,
-															propIndex,
-															e.target.value
-														)
-													}
-													onKeyDown={(e) =>
-														handleKeyDown(
-															e,
-															annotationIndex,
-															"property",
-															propIndex
-														)
-													}
-													onFocus={() =>
-														handleInputFocus(
-															annotationIndex,
-															"property",
-															propIndex
-														)
-													}
-													placeholder="Enter property"
-													className="property-input"
-												/>
-												<button
-													onClick={() =>
-														removePropertyField(annotationIndex, propIndex)
-													}
-													className="delete-field-btn"
-													title="Delete property field"
-												>
-													🗑️
-												</button>
-											</div>
-										))}
-										<button
-											onClick={() => addPropertyField(annotationIndex)}
-											className="add-field-btn"
-										>
-											+ Add Property
-										</button>
-									</div>
-
-									<div className="dimension-section">
-										<h5>Dimensions:</h5>
-										{annotation.dimension.map((dim, dimIndex) => (
-											<div key={dimIndex} className="input-field">
-												<input
-													ref={(el) => {
-														if (el) {
-															inputRefs.current.set(
-																getInputKey(
-																	annotationIndex,
-																	"dimension",
-																	dimIndex
-																),
-																el
+														onKeyDown={(e) =>
+															handleKeyDown(
+																e,
+																annotationIndex,
+																"property",
+																propIndex
 															)
 														}
-													}}
-													type="text"
-													value={dim}
-													onChange={(e) =>
-														updateAnnotationDimension(
-															annotationIndex,
-															dimIndex,
-															e.target.value
-														)
-													}
-													onKeyDown={(e) =>
-														handleKeyDown(
-															e,
-															annotationIndex,
-															"dimension",
-															dimIndex
-														)
-													}
-													onFocus={() =>
-														handleInputFocus(
-															annotationIndex,
-															"dimension",
-															dimIndex
-														)
-													}
-													placeholder="Enter dimension"
-													className="dimension-input"
-												/>
-												<button
-													onClick={() =>
-														removeDimensionField(annotationIndex, dimIndex)
-													}
-													className="delete-field-btn"
-													title="Delete dimension field"
-												>
-													🗑️
-												</button>
-											</div>
-										))}
-										<button
-											onClick={() => addDimensionField(annotationIndex)}
-											className="add-field-btn"
-										>
-											+ Add Dimension
-										</button>
+														onFocus={() =>
+															handleInputFocus(
+																annotationIndex,
+																"property",
+																propIndex
+															)
+														}
+														placeholder="Enter property"
+														className="property-input"
+													/>
+													<button
+														onClick={() =>
+															removePropertyField(annotationIndex, propIndex)
+														}
+														className="delete-field-btn"
+														title="Delete property field"
+													>
+														🗑️
+													</button>
+												</div>
+											))}
+											<button
+												onClick={() => addPropertyField(annotationIndex)}
+												className="add-field-btn"
+											>
+												+ Add Property
+											</button>
+										</div>
+
+										<div className="dimension-section">
+											<h5>Dimensions:</h5>
+											{annotation.dimension.map((dim, dimIndex) => (
+												<div key={dimIndex} className="input-field">
+													<input
+														ref={(el) => {
+															if (el) {
+																inputRefs.current.set(
+																	getInputKey(
+																		annotationIndex,
+																		"dimension",
+																		dimIndex
+																	),
+																	el
+																)
+															}
+														}}
+														type="text"
+														value={dim}
+														onChange={(e) =>
+															updateAnnotationDimension(
+																annotationIndex,
+																dimIndex,
+																e.target.value
+															)
+														}
+														onKeyDown={(e) =>
+															handleKeyDown(
+																e,
+																annotationIndex,
+																"dimension",
+																dimIndex
+															)
+														}
+														onFocus={() =>
+															handleInputFocus(
+																annotationIndex,
+																"dimension",
+																dimIndex
+															)
+														}
+														placeholder="Enter dimension"
+														className="dimension-input"
+													/>
+													<button
+														onClick={() =>
+															removeDimensionField(annotationIndex, dimIndex)
+														}
+														className="delete-field-btn"
+														title="Delete dimension field"
+													>
+														🗑️
+													</button>
+												</div>
+											))}
+											<button
+												onClick={() => addDimensionField(annotationIndex)}
+												className="add-field-btn"
+											>
+												+ Add Dimension
+											</button>
+										</div>
 									</div>
-								</div>
+								)
 							)
+						) : (
+							<div
+								style={{ padding: "2rem", textAlign: "center", color: "#666" }}
+							>
+								<p>
+									No annotations yet. Click "Add New Annotation" to get started.
+								</p>
+							</div>
 						)}
 
 						<button onClick={addAnnotation} className="add-annotation-btn">
