@@ -96,56 +96,56 @@ export const DataInput = ({
 			<div className="data-input-container">
 				<h1>Data Input</h1>
 
-			<div className="upload-section">
-				<div className="section-header-with-button">
-					<div className="section-header">
-						<h2>Target Data JSON *</h2>
-						<p>
-							Expected structure:{" "}
-							{`{data: [{index: number, content: string}, ...]}`}
-						</p>
+				<div className="upload-section">
+					<div className="section-header-with-button">
+						<div className="section-header">
+							<h2>Target Data JSON *</h2>
+							<p>
+								Expected structure:{" "}
+								{`{data: [{index: number, content: string}, ...]}`}
+							</p>
+						</div>
+						<button
+							onClick={handleCreateTargetData}
+							className="create-target-inline-button"
+						>
+							Create from Text
+						</button>
 					</div>
-					<button
-						onClick={handleCreateTargetData}
-						className="create-target-inline-button"
-					>
-						Create from Text
-					</button>
+					<input
+						type="file"
+						accept=".json"
+						onChange={(e) => setTargetFile(e.target.files?.[0] || null)}
+						className="file-input"
+					/>
+					{targetFile && (
+						<p className="file-selected">Selected: {targetFile.name}</p>
+					)}
 				</div>
-				<input
-					type="file"
-					accept=".json"
-					onChange={(e) => setTargetFile(e.target.files?.[0] || null)}
-					className="file-input"
-				/>
-				{targetFile && (
-					<p className="file-selected">Selected: {targetFile.name}</p>
-				)}
+
+				<div className="upload-section">
+					<h2>Annotation JSON (Optional)</h2>
+					<p>
+						Expected structure:{" "}
+						{`{data: [{index: number, annotations: [{property: [string], dimension: [string]}]}, ...]}`}
+					</p>
+					<input
+						type="file"
+						accept=".json"
+						onChange={(e) => setAnnotationFile(e.target.files?.[0] || null)}
+						className="file-input"
+					/>
+					{annotationFile && (
+						<p className="file-selected">Selected: {annotationFile.name}</p>
+					)}
+				</div>
+
+				{error && <div className="error-message">{error}</div>}
+
+				<button onClick={handleSubmit} className="submit-button">
+					Load Data & Continue to Annotation
+				</button>
 			</div>
-
-			<div className="upload-section">
-				<h2>Annotation JSON (Optional)</h2>
-				<p>
-					Expected structure:{" "}
-					{`{data: [{index: number, annotations: [{property: [string], dimension: [string]}]}, ...]}`}
-				</p>
-				<input
-					type="file"
-					accept=".json"
-					onChange={(e) => setAnnotationFile(e.target.files?.[0] || null)}
-					className="file-input"
-				/>
-				{annotationFile && (
-					<p className="file-selected">Selected: {annotationFile.name}</p>
-				)}
-			</div>
-
-			{error && <div className="error-message">{error}</div>}
-
-			<button onClick={handleSubmit} className="submit-button">
-				Load Data & Continue to Annotation
-			</button>
-		</div>
 		</>
 	)
 }

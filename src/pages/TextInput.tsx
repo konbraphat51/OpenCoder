@@ -86,56 +86,58 @@ export const TextInput = ({ onTargetDataCreate }: TextInputProps) => {
 					<h1>Create Target Data</h1>
 				</div>
 
-			<div className="text-input-content">
-				<div className="input-section">
-					<h2>Input Text</h2>
-					<p>
-						Enter your text content that will be split into annotation targets:
-					</p>
-					<textarea
-						value={inputText}
-						onChange={(e) => setInputText(e.target.value)}
-						placeholder="Enter your text content here..."
-						className="large-text-input"
-						rows={15}
-					/>
-				</div>
-
-				<div className="delimiter-section">
-					<h3>Delimiter</h3>
-					<p>
-						Enter the delimiter to split the text (use \n for newline, \t for
-						tab):
-					</p>
-					<input
-						type="text"
-						value={delimiter}
-						onChange={(e) => handleDelimiterChange(e.target.value)}
-						placeholder="Enter delimiter (e.g., \n for newline)"
-						className="delimiter-input"
-					/>
-					<div className="delimiter-preview">
-						Current delimiter: "
-						{delimiter.replace(/\n/g, "\\n").replace(/\t/g, "\\t")}"
+				<div className="text-input-content">
+					<div className="input-section">
+						<h2>Input Text</h2>
+						<p>
+							Enter your text content that will be split into annotation
+							targets:
+						</p>
+						<textarea
+							value={inputText}
+							onChange={(e) => setInputText(e.target.value)}
+							placeholder="Enter your text content here..."
+							className="large-text-input"
+							rows={15}
+						/>
 					</div>
-				</div>
 
-				<div className="preview-section">
-					<h3>Preview</h3>
-					<p>
-						Number of parts after splitting:{" "}
-						{inputText && delimiter
-							? inputText.split(delimiter).filter((part) => part.trim() !== "")
-									.length
-							: 0}
-					</p>
-				</div>
+					<div className="delimiter-section">
+						<h3>Delimiter</h3>
+						<p>
+							Enter the delimiter to split the text (use \n for newline, \t for
+							tab):
+						</p>
+						<input
+							type="text"
+							value={delimiter}
+							onChange={(e) => handleDelimiterChange(e.target.value)}
+							placeholder="Enter delimiter (e.g., \n for newline)"
+							className="delimiter-input"
+						/>
+						<div className="delimiter-preview">
+							Current delimiter: "
+							{delimiter.replace(/\n/g, "\\n").replace(/\t/g, "\\t")}"
+						</div>
+					</div>
 
-				<button onClick={handleRun} className="run-button">
-					Run - Create Target Data
-				</button>
+					<div className="preview-section">
+						<h3>Preview</h3>
+						<p>
+							Number of parts after splitting:{" "}
+							{inputText && delimiter
+								? inputText
+										.split(delimiter)
+										.filter((part) => part.trim() !== "").length
+								: 0}
+						</p>
+					</div>
+
+					<button onClick={handleRun} className="run-button">
+						Run - Create Target Data
+					</button>
+				</div>
 			</div>
-		</div>
 		</>
 	)
 }
