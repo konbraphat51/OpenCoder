@@ -205,6 +205,26 @@ export const AnnotationPage = ({
 		}
 	}
 
+	// Navigate to previous/next index
+	const navigateIndex = (direction: "up" | "down") => {
+		if (!targetData) return
+
+		const sortedIndices = targetData.data
+			.map((item) => item.index)
+			.sort((a, b) => a - b)
+
+		const currentIndexPosition = sortedIndices.indexOf(selectedIndex)
+
+		if (direction === "up" && currentIndexPosition > 0) {
+			setSelectedIndex(sortedIndices[currentIndexPosition - 1])
+		} else if (
+			direction === "down" &&
+			currentIndexPosition < sortedIndices.length - 1
+		) {
+			setSelectedIndex(sortedIndices[currentIndexPosition + 1])
+		}
+	}
+
 	// Generate a unique key for input field referencing
 	const getInputKey = (
 		annotationIndex: number,
@@ -307,7 +327,10 @@ export const AnnotationPage = ({
 	) => {
 		if (e.key === "ArrowUp") {
 			e.preventDefault()
-			if (e.ctrlKey) {
+			if (e.altKey) {
+				// Navigate to previous index
+				navigateIndex("up")
+			} else if (e.ctrlKey) {
 				// Move annotation card up
 				moveAnnotation(annotationIndex, "up")
 			} else {
@@ -315,7 +338,10 @@ export const AnnotationPage = ({
 			}
 		} else if (e.key === "ArrowDown") {
 			e.preventDefault()
-			if (e.ctrlKey) {
+			if (e.altKey) {
+				// Navigate to next index
+				navigateIndex("down")
+			} else if (e.ctrlKey) {
 				// Move annotation card down
 				moveAnnotation(annotationIndex, "down")
 			} else {
@@ -598,7 +624,7 @@ export const AnnotationPage = ({
 					<div style={{ fontSize: "1rem", color: "#666" }}>
 						<strong>Shortcuts:</strong> ↑↓ Navigate | Shift+↑↓ Switch sections |
 						Enter Add field | Shift+Enter Add annotation | Ctrl+↑↓ Move card |
-						Del Remove field
+						Alt+↑↓ Change index | Del Remove field
 					</div>
 					<a
 						href="https://github.com/konbraphat51/OpenCoder/blob/main/USER-README.md"
