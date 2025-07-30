@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react"
-import { Header } from "../components/Header"
 import type { TargetData, AnnotationData, Annotation } from "../types"
 
 // Focus tracking type
@@ -389,7 +388,6 @@ export const AnnotationPage = ({
 
 	return (
 		<>
-			<Header />
 			<div className="annotation-page">
 				<div className="annotation-left">
 					<div className="index-selector">
@@ -573,6 +571,32 @@ export const AnnotationPage = ({
 							Save Annotations
 						</button>
 					</div>
+				</div>
+			</div>
+
+			<div className="shortcuts-footer">
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "space-between",
+						alignItems: "center",
+						width: "100%",
+					}}
+				>
+					<small>
+						<strong>Shortcuts:</strong> ↑↓ Navigate | Shift+↑↓ Switch sections |
+						Enter Add field | Shift+Enter Add annotation | Ctrl+↑↓ Move card |
+						Del Remove field
+					</small>
+					<a
+						href="https://github.com/konbraphat51/OpenCoder/blob/main/USER-README.md"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="how-to-use-link"
+						style={{ fontSize: "0.875rem" }}
+					>
+						📖 How To Use
+					</a>
 				</div>
 			</div>
 		</>
