@@ -583,17 +583,17 @@ export const AnnotationPage = ({
 						width: "100%",
 					}}
 				>
-					<small>
+					<div style={{ fontSize: "1rem", color: "#666" }}>
 						<strong>Shortcuts:</strong> ↑↓ Navigate | Shift+↑↓ Switch sections |
 						Enter Add field | Shift+Enter Add annotation | Ctrl+↑↓ Move card |
 						Del Remove field
-					</small>
+					</div>
 					<a
 						href="https://github.com/konbraphat51/OpenCoder/blob/main/USER-README.md"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="how-to-use-link"
-						style={{ fontSize: "0.875rem" }}
+						style={{ fontSize: "1rem" }}
 					>
 						📖 How To Use
 					</a>
