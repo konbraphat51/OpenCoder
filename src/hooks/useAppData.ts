@@ -25,7 +25,11 @@ export const useAppData = () => {
 		const url = URL.createObjectURL(blob)
 		const a = document.createElement("a")
 		a.href = url
-		a.download = "annotations.json"
+
+		// Generate filename with unix timestamp
+		const unixTime = Math.floor(Date.now() / 1000)
+		a.download = `annotation_${unixTime}.json`
+
 		document.body.appendChild(a)
 		a.click()
 		document.body.removeChild(a)
