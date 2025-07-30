@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { Header } from "../components/Header"
 import type { TargetData, AnnotationData } from "../types"
 
 interface DataInputProps {
@@ -90,8 +91,10 @@ export const DataInput = ({
 	}
 
 	return (
-		<div className="data-input-container">
-			<h1>Data Input</h1>
+		<>
+			<Header />
+			<div className="data-input-container">
+				<h1>Data Input</h1>
 
 			<div className="upload-section">
 				<div className="section-header-with-button">
@@ -143,5 +146,6 @@ export const DataInput = ({
 				Load Data & Continue to Annotation
 			</button>
 		</div>
+		</>
 	)
 }

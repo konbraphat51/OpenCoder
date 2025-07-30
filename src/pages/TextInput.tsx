@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { Header } from "../components/Header"
 import type { TargetData } from "../types"
 
 interface TextInputProps {
@@ -75,13 +76,15 @@ export const TextInput = ({ onTargetDataCreate }: TextInputProps) => {
 	}
 
 	return (
-		<div className="text-input-container">
-			<div className="text-input-header">
-				<button onClick={handleBackToUpload} className="back-button">
-					← Back to Data Upload
-				</button>
-				<h1>Create Target Data</h1>
-			</div>
+		<>
+			<Header />
+			<div className="text-input-container">
+				<div className="text-input-header">
+					<button onClick={handleBackToUpload} className="back-button">
+						← Back to Data Upload
+					</button>
+					<h1>Create Target Data</h1>
+				</div>
 
 			<div className="text-input-content">
 				<div className="input-section">
@@ -133,5 +136,6 @@ export const TextInput = ({ onTargetDataCreate }: TextInputProps) => {
 				</button>
 			</div>
 		</div>
+		</>
 	)
 }

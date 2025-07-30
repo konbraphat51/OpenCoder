@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Header } from "../components/Header"
 import type { TargetData, AnnotationData, Annotation } from "../types"
 
 interface AnnotationPageProps {
@@ -160,16 +161,18 @@ export const AnnotationPage = ({
 	}
 
 	return (
-		<div className="annotation-page">
-			<div className="annotation-left">
-				<div className="index-selector">
-					<label htmlFor="index-select">Select Index:</label>
-					<select
-						id="index-select"
-						value={selectedIndex}
-						onChange={(e) => setSelectedIndex(Number(e.target.value))}
-						className="index-dropdown"
-					>
+		<>
+			<Header />
+			<div className="annotation-page">
+				<div className="annotation-left">
+					<div className="index-selector">
+						<label htmlFor="index-select">Select Index:</label>
+						<select
+							id="index-select"
+							value={selectedIndex}
+							onChange={(e) => setSelectedIndex(Number(e.target.value))}
+							className="index-dropdown"
+						>
 						{targetData.data.map((item) => (
 							<option key={item.index} value={item.index}>
 								Index {item.index}
@@ -291,5 +294,6 @@ export const AnnotationPage = ({
 				</div>
 			</div>
 		</div>
+		</>
 	)
 }
