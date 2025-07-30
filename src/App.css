@@ -66,6 +66,47 @@ body {
 	border-radius: 6px;
 }
 
+/* Section header with inline button layout */
+.section-header-with-button {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-bottom: 1rem;
+}
+
+.section-header {
+	flex: 1;
+}
+
+.section-header h2 {
+	margin-bottom: 0.5rem;
+}
+
+.section-header p {
+	margin-bottom: 0;
+}
+
+.create-target-inline-button {
+	background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+	color: white;
+	border: none;
+	padding: 0.75rem 1.25rem;
+	border-radius: 8px;
+	font-size: 0.9rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	white-space: nowrap;
+	flex-shrink: 0;
+	height: fit-content;
+}
+
+.create-target-inline-button:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 6px 15px rgba(237, 137, 54, 0.4);
+}
+
 .file-input {
 	width: 100%;
 	padding: 0.75rem;
@@ -375,6 +416,201 @@ body {
 	color: #718096;
 }
 
+/* Text Input Page Styles */
+.text-input-container {
+	max-width: 900px;
+	margin: 2rem auto;
+	padding: 2rem;
+	background: white;
+	border-radius: 20px;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(10px);
+	min-height: calc(100vh - 4rem);
+}
+
+.text-input-header {
+	display: flex;
+	align-items: center;
+	margin-bottom: 2rem;
+	position: relative;
+}
+
+.back-button {
+	background: #e2e8f0;
+	color: #4a5568;
+	border: none;
+	padding: 0.75rem 1.5rem;
+	border-radius: 12px;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: absolute;
+	left: 0;
+}
+
+.back-button:hover {
+	background: #cbd5e0;
+	transform: translateX(-2px);
+}
+
+.text-input-header h1 {
+	flex: 1;
+	text-align: center;
+	color: #4a5568;
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin: 0;
+}
+
+.text-input-content {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.input-section {
+	display: flex;
+	flex-direction: column;
+}
+
+.input-section h2 {
+	color: #2d3748;
+	margin-bottom: 0.5rem;
+	font-size: 1.5rem;
+}
+
+.input-section p {
+	color: #718096;
+	margin-bottom: 1rem;
+	font-size: 1rem;
+}
+
+.large-text-input {
+	width: 100%;
+	padding: 1.5rem;
+	border: 2px solid #e2e8f0;
+	border-radius: 12px;
+	font-size: 1rem;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	line-height: 1.6;
+	resize: vertical;
+	min-height: 300px;
+	transition: border-color 0.3s ease;
+}
+
+.large-text-input:focus {
+	outline: none;
+	border-color: #667eea;
+	box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.delimiter-section {
+	display: flex;
+	flex-direction: column;
+}
+
+.delimiter-section h3 {
+	color: #2d3748;
+	margin-bottom: 0.5rem;
+	font-size: 1.3rem;
+}
+
+.delimiter-section p {
+	color: #718096;
+	margin-bottom: 1rem;
+	font-size: 0.9rem;
+}
+
+.delimiter-input {
+	width: 300px;
+	padding: 0.75rem;
+	border: 2px solid #e2e8f0;
+	border-radius: 8px;
+	font-size: 1rem;
+	font-family: "Courier New", monospace;
+	transition: border-color 0.3s ease;
+}
+
+.delimiter-input:focus {
+	outline: none;
+	border-color: #667eea;
+	box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.delimiter-preview {
+	margin-top: 0.5rem;
+	padding: 0.5rem;
+	background: #f0f4ff;
+	border-radius: 6px;
+	font-size: 0.9rem;
+	color: #4a5568;
+	font-family: "Courier New", monospace;
+	border-left: 3px solid #667eea;
+}
+
+.preview-section {
+	padding: 1.5rem;
+	background: #f8fafc;
+	border-radius: 12px;
+	border: 1px solid #e2e8f0;
+}
+
+.preview-section h3 {
+	color: #2d3748;
+	margin-bottom: 0.5rem;
+	font-size: 1.3rem;
+}
+
+.preview-section p {
+	color: #4a5568;
+	font-size: 1rem;
+	font-weight: 500;
+}
+
+.run-button {
+	background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+	color: white;
+	border: none;
+	padding: 1.25rem 2rem;
+	border-radius: 12px;
+	font-size: 1.2rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	align-self: center;
+	min-width: 300px;
+}
+
+.run-button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 10px 25px rgba(72, 187, 120, 0.4);
+}
+
+.run-button:active {
+	transform: translateY(0);
+}
+
+/* Create Target Data Button Styles */
+.create-target-button {
+	background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+	color: white;
+	border: none;
+	padding: 1rem 2rem;
+	border-radius: 12px;
+	font-size: 1.1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	width: 100%;
+	margin-top: 1rem;
+}
+
+.create-target-button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 10px 25px rgba(237, 137, 54, 0.4);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
 	.annotation-page {
@@ -397,5 +633,46 @@ body {
 
 	.annotations-list {
 		max-height: calc(60vh - 80px);
+	}
+
+	/* Mobile responsive for inline button */
+	.section-header-with-button {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 1rem;
+	}
+
+	.create-target-inline-button {
+		width: 100%;
+		text-align: center;
+	}
+
+	.text-input-container {
+		margin: 1rem;
+		padding: 1.5rem;
+	}
+
+	.text-input-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1rem;
+	}
+
+	.back-button {
+		position: static;
+	}
+
+	.text-input-header h1 {
+		text-align: left;
+		font-size: 2rem;
+	}
+
+	.delimiter-input {
+		width: 100%;
+	}
+
+	.run-button {
+		min-width: auto;
+		width: 100%;
 	}
 }

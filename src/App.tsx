@@ -7,6 +7,7 @@ import {
 import { useAppData } from "./hooks/useAppData"
 import { DataInput } from "./pages/DataInput"
 import { AnnotationPage } from "./pages/AnnotationPage"
+import { TextInput } from "./pages/TextInput"
 import "./App.css"
 
 function App() {
@@ -30,6 +31,10 @@ function App() {
 								onAnnotationDataLoad={loadAnnotationData}
 							/>
 						}
+					/>
+					<Route
+						path="/text-input"
+						element={<TextInput onTargetDataCreate={loadTargetData} />}
 					/>
 					<Route
 						path="/annotation"

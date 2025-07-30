@@ -85,16 +85,30 @@ export const DataInput = ({
 		})
 	}
 
+	const handleCreateTargetData = () => {
+		navigate("/text-input")
+	}
+
 	return (
 		<div className="data-input-container">
 			<h1>Data Input</h1>
 
 			<div className="upload-section">
-				<h2>Target Data JSON *</h2>
-				<p>
-					Expected structure:{" "}
-					{`{data: [{index: number, content: string}, ...]}`}
-				</p>
+				<div className="section-header-with-button">
+					<div className="section-header">
+						<h2>Target Data JSON *</h2>
+						<p>
+							Expected structure:{" "}
+							{`{data: [{index: number, content: string}, ...]}`}
+						</p>
+					</div>
+					<button
+						onClick={handleCreateTargetData}
+						className="create-target-inline-button"
+					>
+						Create from Text
+					</button>
+				</div>
 				<input
 					type="file"
 					accept=".json"
