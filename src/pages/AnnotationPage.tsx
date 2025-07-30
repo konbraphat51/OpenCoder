@@ -16,11 +16,42 @@ export const AnnotationPage = ({
 	const [currentAnnotations, setCurrentAnnotations] =
 		useState<AnnotationData | null>(null)
 
+	// Helper function to find the default index (smallest unannotated index, or first if all annotated)
+	const getDefaultIndex = (
+		targetData: TargetData,
+		annotationData: AnnotationData
+	): number => {
+		// Sort target data by index to get smallest first
+		const sortedTargetData = [...targetData.data].sort(
+			(a, b) => a.index - b.index
+		)
+
+		// Find the first index that has no annotations or empty annotations
+		for (const targetItem of sortedTargetData) {
+			const annotationItem = annotationData.data.find(
+				(item) => item.index === targetItem.index
+			)
+			if (!annotationItem || annotationItem.annotations.length === 0) {
+				return targetItem.index
+			}
+		}
+
+		// If all are annotated, return the first (smallest) index
+		return sortedTargetData[0]?.index || 0
+	}
+
 	useEffect(() => {
 		if (annotationData) {
 			setCurrentAnnotations(JSON.parse(JSON.stringify(annotationData))) // Deep copy
 		}
 	}, [annotationData])
+
+	useEffect(() => {
+		if (targetData && annotationData) {
+			const defaultIndex = getDefaultIndex(targetData, annotationData)
+			setSelectedIndex(defaultIndex)
+		}
+	}, [targetData, annotationData])
 
 	if (!targetData || !currentAnnotations) {
 		return (
